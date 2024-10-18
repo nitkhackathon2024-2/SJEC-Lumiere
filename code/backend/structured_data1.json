@@ -1,0 +1,173 @@
+[
+    {
+        "model": "llama3.1",
+        "created_at": "2024-10-18T18:46:54.045281608Z",
+        "message": {
+            "role": "assistant",
+            "content": "It"
+        },
+        "done": false
+    },
+    {
+        "success": "Data processed successfully",
+        "structured_data": {
+            "model": "llama3.1",
+            "created_at": "2024-10-18T18:46:54.045281608Z",
+            "message": {
+                "role": "assistant",
+                "content": "It"
+            },
+            "done": false
+        }
+    },
+    {
+        "content": "This appears to be a document related to the driving license of an individual named Pratham V Bhat. Here's a breakdown of the information presented:\n\n**Driving License Details**\n\n* **Sr#**: Not clear, but likely a serial number or reference code.\n* **DL No.**: Driving License Number, which is KA19 20240004325.\n* **DOI**: Date of Issue, which is 10/05/2024.\n\n**License Holder Information**\n\n* **Name**: Pratham V Bhat\n* **Date of Birth (D.O.B)**: 05/12/2003\n* **Blood Group (B.G.)**: Bt\n\n**Validity Details**\n\n* **Valid Till**: 04/12/2043 (NT), indicating the license is valid until this date.\n* **Valid Throughout India**, which suggests that the driving license is valid across the entire country.\n\n**Other Information**\n\n* **cov**: Not clear, but possibly an abbreviation for a specific type of vehicle or license category. In this case, it seems to be related to LMV (Light Motor Vehicle) and MCWG (Motor Cycle Without Gear).\n* **Z0Z-S0-01 - 1OdD**: This appears to be a unique code or reference number.\n\n**License Issuance Details**\n\n* **Name of License Holder's Father**: S VENKATESH BHAT\n* **Address of the License Holder**: 6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY, Mangalore, Dakshina Kannad, KA 575002\n\n**Signatures and Verification**\n\n* **Sign. Of Holder**: The signature of the license holder (Pratham V Bhat).\n* **Sign. Licencing Authority**: The signature of the licensing authority, which is Mangaluru-Kai9 in this case.\n\nPlease note that this document appears to be a scanned or photographed copy of an original driving license, and some information might be hard to read due to formatting issues."
+    },
+    {
+        "success": "Data processed successfully",
+        "structured_data": {
+            "content": "This appears to be a document related to the driving license of an individual named Pratham V Bhat. Here's a breakdown of the information presented:\n\n**Driving License Details**\n\n* **Sr#**: Not clear, but likely a serial number or reference code.\n* **DL No.**: Driving License Number, which is KA19 20240004325.\n* **DOI**: Date of Issue, which is 10/05/2024.\n\n**License Holder Information**\n\n* **Name**: Pratham V Bhat\n* **Date of Birth (D.O.B)**: 05/12/2003\n* **Blood Group (B.G.)**: Bt\n\n**Validity Details**\n\n* **Valid Till**: 04/12/2043 (NT), indicating the license is valid until this date.\n* **Valid Throughout India**, which suggests that the driving license is valid across the entire country.\n\n**Other Information**\n\n* **cov**: Not clear, but possibly an abbreviation for a specific type of vehicle or license category. In this case, it seems to be related to LMV (Light Motor Vehicle) and MCWG (Motor Cycle Without Gear).\n* **Z0Z-S0-01 - 1OdD**: This appears to be a unique code or reference number.\n\n**License Issuance Details**\n\n* **Name of License Holder's Father**: S VENKATESH BHAT\n* **Address of the License Holder**: 6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY, Mangalore, Dakshina Kannad, KA 575002\n\n**Signatures and Verification**\n\n* **Sign. Of Holder**: The signature of the license holder (Pratham V Bhat).\n* **Sign. Licencing Authority**: The signature of the licensing authority, which is Mangaluru-Kai9 in this case.\n\nPlease note that this document appears to be a scanned or photographed copy of an original driving license, and some information might be hard to read due to formatting issues."
+        }
+    },
+    {
+        "Sr#": 1,
+        "Details": [
+            {
+                "Label": "DL No.",
+                "Value": "KA19 20240004325"
+            },
+            {
+                "Label": "DOI",
+                "Value": "10/05/2024"
+            },
+            {
+                "Label": "FORM -7",
+                "Value": ""
+            }
+        ],
+        "PersonalInfo": [
+            {
+                "Label": "NAME",
+                "Value": "PRATHAM V BHAT"
+            },
+            {
+                "Label": "D.O.B",
+                "Value": "05/12/2003"
+            },
+            {
+                "Label": "B.G.",
+                "Value": "Bt"
+            }
+        ],
+        "ValidInfo": [
+            {
+                "Label": "VALID TILL",
+                "Value": "04/12/2043"
+            },
+            {
+                "Label": "Cov",
+                "Value": "LMV 10/05/2024"
+            },
+            {
+                "Label": "",
+                "Value": "MCWG 10/05/2024"
+            }
+        ],
+        "AddressInfo": [
+            {
+                "Label": "S/o",
+                "Value": ". S VENKATESH BHAT"
+            },
+            {
+                "Label": "ADDRESS",
+                "Value": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY ae a"
+            }
+        ],
+        "ContactInfo": [
+            {
+                "Label": "City",
+                "Value": "Mangalore"
+            },
+            {
+                "Label": "District",
+                "Value": "Dakshina Kannad"
+            },
+            {
+                "Label": "Pincode",
+                "Value": "KA 575002"
+            }
+        ]
+    },
+    {
+        "success": "Data processed successfully",
+        "structured_data": {
+            "Sr#": 1,
+            "Details": [
+                {
+                    "Label": "DL No.",
+                    "Value": "KA19 20240004325"
+                },
+                {
+                    "Label": "DOI",
+                    "Value": "10/05/2024"
+                },
+                {
+                    "Label": "FORM -7",
+                    "Value": ""
+                }
+            ],
+            "PersonalInfo": [
+                {
+                    "Label": "NAME",
+                    "Value": "PRATHAM V BHAT"
+                },
+                {
+                    "Label": "D.O.B",
+                    "Value": "05/12/2003"
+                },
+                {
+                    "Label": "B.G.",
+                    "Value": "Bt"
+                }
+            ],
+            "ValidInfo": [
+                {
+                    "Label": "VALID TILL",
+                    "Value": "04/12/2043"
+                },
+                {
+                    "Label": "Cov",
+                    "Value": "LMV 10/05/2024"
+                },
+                {
+                    "Label": "",
+                    "Value": "MCWG 10/05/2024"
+                }
+            ],
+            "AddressInfo": [
+                {
+                    "Label": "S/o",
+                    "Value": ". S VENKATESH BHAT"
+                },
+                {
+                    "Label": "ADDRESS",
+                    "Value": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY ae a"
+                }
+            ],
+            "ContactInfo": [
+                {
+                    "Label": "City",
+                    "Value": "Mangalore"
+                },
+                {
+                    "Label": "District",
+                    "Value": "Dakshina Kannad"
+                },
+                {
+                    "Label": "Pincode",
+                    "Value": "KA 575002"
+                }
+            ]
+        }
+    }
+]

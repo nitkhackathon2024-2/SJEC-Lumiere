@@ -1,20 +1,11 @@
 [
     {
-        "type": "dl",
+        "type": "DL",
         "data": {
-            "name": "PRATHAM V BHAT",
+            "name": "PRATHAM V BHAT [ae Fae TR]",
             "dob": "05/12/2003",
             "gender": "Bt",
-            "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY a Mangalore,Dakshina Kannad,KA 575002"
-        }
-    },
-    {
-        "type": "Permanent Account Number Card",
-        "data": {
-            "name": "PRATHAM V BHAT",
-            "dob": null,
-            "gender": null,
-            "address": "ale fret ara / Father's Name SHANKAR VENKATESH BHAT"
+            "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY  Mangalore,Dakshina Kannad,KA 575002"
         }
     }
 ]

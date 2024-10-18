@@ -8,8 +8,18 @@ import io
 import os
 import fitz
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
+
+# Environment variables
+OLLAMA_API_URL = os.getenv("OLLAMA_API_URL")
+ARTIFACTS_DIR = os.getenv("ARTIFACTS_DIR")
+JSON_FILE_PATH = os.path.join(ARTIFACTS_DIR, os.getenv("JSON_FILE_NAME"))
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS").split(",")
+TESSERACT_CMD = os.getenv("TESSERACT_CMD")
 
 # CORS Middleware for frontend (Next.js)
 app.add_middleware(
@@ -20,8 +30,8 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers (authorization, content-type, etc.)
 )
 
-OLLAMA_API_URL = "http://localhost:11434/api/chat"  # Ollama API URL (for curl)
-JSON_FILE_PATH = "structured_data.json"  # Path to save the structured data
+# OLLAMA_API_URL = "http://localhost:11434/api/chat"  # Ollama API URL (for curl)
+# JSON_FILE_PATH = "structured_data.json"  # Path to save the structured data
 
 @app.post("/api/v1/uploads/")
 async def upload_file(file: UploadFile = File(...)):
@@ -99,53 +109,26 @@ def extract_first_json(response_text):
 
 # 
 
-async def save_structured_data(data, file_path="structured_data.json"):
-    """
-    Saves the structured data into a JSON file asynchronously.
-    
-    :param data: The structured JSON data to be saved.
-    :param file_path: The path to the JSON file (default: 'structured_data.json').
-    """
+async def save_structured_data(data):
     try:
-        # Check if data is valid and not empty
         if not data:
             return {"error": "No data to save"}
 
-        # Check if the file exists
-        if os.path.exists(file_path):
-            # Read existing data from the file
-            with open(file_path, 'r') as file:
-                try:
-                    existing_data = json.load(file)
-                    if isinstance(existing_data, list):
-                        existing_data.append(data)
-                    else:
-                        existing_data = [existing_data, data]
-                except json.JSONDecodeError:
-                    existing_data = [data]
-        else:
-            existing_data = [data]
-
-        # Write the updated data back to the file
-        with open(file_path, 'w') as file:
-            json.dump(existing_data, file, indent=4)
+        os.makedirs(settings.ARTIFACTS_DIR, exist_ok=True)
+        with open(settings.JSON_FILE_PATH, 'w') as file:
+            json.dump([data], file, indent=4)
 
         return {"success": "Data successfully saved."}
-
     except Exception as e:
         return {"error": f"Failed to save structured data: {str(e)}"}
 
+
 async def pass_to_llama_model(extracted_text):
     try:
-        prompt = f"""
-        Convert the following text to JSON. Return ONLY valid JSON, no other text:
-        {extracted_text}
-        Format: {{"type": "<document_type>", "data": {{"name": "<name>", "dob": "<date>", "gender": "<gender>", "address": "<address>"}}}}
-        """
-
+        # ... rest of the function remains same ...
         curl_command = [
             "curl",
-            OLLAMA_API_URL,
+            settings.OLLAMA_API_URL,
             "-d", json.dumps({
                 "model": "llama3.1",
                 "messages": [{"role": "user", "content": prompt}],
