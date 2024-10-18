@@ -43,5 +43,5 @@ next-env.d.ts
 __pycache__
 
 # Node Modules
-/node_modules/
+node_modules/
 /client/node_modules/
