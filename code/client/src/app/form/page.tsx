@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  // CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -21,7 +20,6 @@ const formData = [
       gender: "Male",
       aadhar_number: "1234 5678 9101",
       address: "123, MG Road Bangalore Karnataka 560001",
-      phone: "23543i03",
     },
   },
 
@@ -107,22 +105,12 @@ export default function Form() {
                   <CardTitle>{form.type}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  {/* {formData.map((fields) => ( */}
                   {Object.entries(form.data).map(([key, value]) => (
                     <div className="space-y-1" key={key}>
                       <Label htmlFor="name">{key.toUpperCase()}</Label>
                       <Input id="name" defaultValue={value} />
                     </div>
                   ))}
-
-                  {/* // <div key={key}> */}
-                  {/* <strong>{key}:</strong> {value} */}
-                  {/* </div> */}
-                  {/* // ))} */}
-                  {/* <div className="space-y-1">
-                    <Label htmlFor="username">Username</Label>
-                    <Input id="username" defaultValue="@peduarte" />
-                  </div> */}
                 </CardContent>
                 <CardFooter>
                   <Button>Save changes</Button>
@@ -132,80 +120,6 @@ export default function Form() {
           ))}
         </>
       </Tabs>
-      {/* <Tabs>
-        <TabsContent value="form2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Form 2 </CardTitle>
-              <CardDescription>
-                Change your password here. After saving, you&apos;ll be logged
-                out.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="space-y-1">
-                <Label htmlFor="current">Current password</Label>
-                <Input id="current" type="password" />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="new">New password</Label>
-                <Input id="new" type="password" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save password</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="form3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Form 3</CardTitle>
-              <CardDescription>
-                Change your password here. After saving, you&apos;ll be logged
-                out.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="space-y-1">
-                <Label htmlFor="current">Current password</Label>
-                <Input id="current" type="password" />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="new">New password</Label>
-                <Input id="new" type="password" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save password</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="form4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Form 4</CardTitle>
-              <CardDescription>
-                Change your password here. After saving, you&apos;ll be logged
-                out.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="space-y-1">
-                <Label htmlFor="current">Current password</Label>
-                <Input id="current" type="password" />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="new">New password</Label>
-                <Input id="new" type="password" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save password</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-      </Tabs> */}
     </main>
   );
 }
