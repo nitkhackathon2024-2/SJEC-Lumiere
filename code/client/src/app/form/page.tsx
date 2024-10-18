@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+import React from //  { useEffect, useState }
+"react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { useRouter } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 
 const formData = [
   {
@@ -85,8 +89,46 @@ const formData = [
   },
 ];
 
-export default function Form() {
-  console.log("data", formData[0].data.name);
+import { ParsedUrlQuery } from "querystring";
+// import axios from "axios";
+
+interface FormProps {
+  searchParams: ParsedUrlQuery;
+}
+
+export default function Form({ searchParams }: FormProps) {
+  // const router = useRouter();
+  // const data = router.query;
+  // console.log("data: ", data);/
+  // const searchParams = useSearchParams();
+  console.log("data2:", searchParams);
+
+  // const [res, setRes] = useState();
+
+  // useEffect(() => {
+  //   const fetchRes = async () => {
+  //     try {
+  //       const response = await axios.post(
+  //         "http://localhost:8000/api/v1/uploads/",
+  //         formData,
+  //         {
+  //           headers: {
+  //             "Content-Type": "multipart/form-data",
+  //           },
+  //         }
+  //       );
+  //       console.log("Response:", response.data);
+  //       setRes(response.data);
+  //       console.log("res: ", res);
+  //       // console.log(res);
+  //     } catch (error) {
+  //       console.error("Upload error:", error);
+  //     }
+  //   };
+  //   fetchRes();
+  // }, []);
+
+  // console.log("data", formData[0].data.name);
   return (
     <main className="flex items-center w-full h-screen justify-center">
       <Tabs defaultValue={formData[0].type} className="w-fit">
