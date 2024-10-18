@@ -29,32 +29,20 @@ async def upload_file(file: UploadFile = File(...)):
         file_extension = file.filename.split(".")[-1].lower()
         
         if file_extension in ["jpg", "jpeg", "png", "bmp", "tiff"]:
-            # Process image files
             image_stream = io.BytesIO(await file.read())
             image = Image.open(image_stream)
             text = pytesseract.image_to_string(image, lang='eng')
-            structured_data = await pass_to_llama_model(text)
-            await save_structured_data(structured_data)
-            return {"file_type": "image", "structured_data": structured_data}
-        
         elif file_extension == "txt":
-            # Process text files
             content = await file.read()
             text = content.decode("utf-8")
-            structured_data = await pass_to_llama_model(text)
-            await save_structured_data(structured_data)
-            return {"file_type": "text", "structured_data": structured_data}
-        
         elif file_extension == "pdf":
-            # Process PDF files
             pdf_stream = io.BytesIO(await file.read())
             text = extract_text_from_pdf(pdf_stream)
-            structured_data = await pass_to_llama_model(text)
-            await save_structured_data(structured_data)
-            return {"file_type": "pdf", "structured_data": structured_data}
-        
         else:
             return {"error": "Unsupported file type"}
+
+        structured_data = await pass_to_llama_model(text)
+        return {"file_type": file_extension, "structured_data": structured_data}
 
     except Exception as e:
         return {"error": str(e)}
@@ -147,140 +135,6 @@ async def save_structured_data(data, file_path="structured_data.json"):
     except Exception as e:
         return {"error": f"Failed to save structured data: {str(e)}"}
 
-
-
-# async def pass_to_llama_model(extracted_text):
-#     try:
-#         # Print extracted text for debugging
-#         print(extracted_text)
-        
-#         # Construct the curl command to send the extracted text to the Llama model
-#         curl_command = [
-#             "curl",
-#             OLLAMA_API_URL,  # Use the URL variable defined earlier
-#             "-d", json.dumps({
-#                 "model": "llama3.1",
-#                 "messages": [{"role": "user", "content": extracted_text}]
-#             }),
-#             "-H", "Content-Type: application/json"
-#         ]
-
-#         # Run the curl command and capture the output
-#         result = subprocess.run(curl_command, capture_output=True, text=True)
-
-#         # Check if the curl command succeeded
-#         if result.returncode != 0:
-#             return {"error": "Failed to communicate with llama3.1 model"}
-
-#         # Capture the raw response from the model
-#         response = result.stdout
-#         print("Raw response:", response)  # Debugging output
-        
-#         # Initialize a variable to accumulate the content
-#         full_response_content = ""
-
-#         # Split the response by lines (since it's coming in parts)
-#         for line in response.splitlines():
-#             try:
-#                 # Parse each line as JSON
-#                 line_data = json.loads(line)
-#                 if "message" in line_data and "content" in line_data["message"]:
-#                     # Append the content to the full response
-#                     full_response_content += line_data["message"]["content"]
-#             except json.JSONDecodeError:
-#                 # Skip lines that are not valid JSON
-#                 continue
-
-#         # At this point, we have the full accumulated content
-#         print("Full response content:", full_response_content)  # Debugging step
-
-#         # You can now pass this full content to any further processing or save it
-#         structured_data = {"content": full_response_content}
-        
-#         # Save the structured data to a file
-#         save_result = save_structured_data(structured_data)
-
-#         # Return the result of the save operation
-#         return {"success": "Data processed successfully", "structured_data": structured_data}
-
-#     except Exception as e:
-#         return {"error": str(e)}
-
-# async def pass_to_llama_model(extracted_text):
-#     try:
-#         # Print extracted text for debugging
-#         print("Extracted text:", extracted_text)
-        
-#         # Construct the prompt to generate structured JSON
-#         prompt = f"""
-#         Convert the following information into a structured JSON format with labels:
-#         {extracted_text}
-#         The expected format is:
-#         [
-#             {{
-#                 "Name": "<name>",
-#                 "Age": <age>,
-#                 "Gender": "<gender>"
-#             }}
-#         ]
-#         """
-
-#         # Construct the curl command to send the extracted text to the Llama model
-#         curl_command = [
-#             "curl",
-#             OLLAMA_API_URL,  # Use the URL variable defined earlier
-#             "-d", json.dumps({
-#                 "model": "llama3.1",
-#                 "messages": [{"role": "user", "content": prompt}]
-#             }),
-#             "-H", "Content-Type: application/json"
-#         ]
-
-#         # Run the curl command and capture the output
-#         result = subprocess.run(curl_command, capture_output=True, text=True)
-
-#         # Check if the curl command succeeded
-#         if result.returncode != 0:
-#             return {"error": "Failed to communicate with llama3.1 model"}
-
-#         # Capture the raw response from the model
-#         response = result.stdout
-#         print("Raw response:", response)  # Debugging output
-        
-#         # Initialize a variable to accumulate the content
-#         full_response_content = ""
-
-#         # Split the response by lines (since it's coming in parts)
-#         for line in response.splitlines():
-#             try:
-#                 # Parse each line as JSON
-#                 line_data = json.loads(line)
-#                 if "message" in line_data and "content" in line_data["message"]:
-#                     # Append the content to the full response
-#                     full_response_content += line_data["message"]["content"]
-#             except json.JSONDecodeError:
-#                 # Skip lines that are not valid JSON
-#                 continue
-
-#         # At this point, we have the full accumulated content
-#         print("Full response content:", full_response_content)  # Debugging step
-
-#         # Attempt to parse the structured data from the response
-#         structured_data = extract_first_json(full_response_content)
-
-#         if structured_data:
-#             # Parse it into a JSON object
-#             structured_json = json.loads(structured_data)
-#             # Save the structured data to a file
-#             save_result = save_structured_data(structured_json)
-#             return {"success": "Data processed successfully", "structured_data": structured_json}
-#         else:
-#             return {"error": "Failed to extract structured data from the response"}
-
-#     except Exception as e:
-#         return {"error": str(e)}
-
-
 async def pass_to_llama_model(extracted_text):
     try:
         prompt = f"""
@@ -301,33 +155,25 @@ async def pass_to_llama_model(extracted_text):
         ]
 
         result = subprocess.run(curl_command, capture_output=True, text=True)
-        print(f"Model Response: {result.stdout}")  # Debug log
+        print(f"Model Response: {result.stdout}")
 
         if result.returncode != 0:
-            print(f"Curl Error: {result.stderr}")  # Debug log
             return {"error": f"Curl command failed: {result.stderr}"}
 
         try:
             response_data = json.loads(result.stdout)
             if "message" in response_data and "content" in response_data["message"]:
                 content = response_data["message"]["content"].strip()
-                # Try to find JSON pattern
                 json_match = re.search(r'\{.*\}', content, re.DOTALL)
                 if json_match:
-                    try:
-                        structured_data = json.loads(json_match.group())
-                        await save_structured_data(structured_data)
-                        return {"success": True, "structured_data": structured_data}
-                    except json.JSONDecodeError as e:
-                        print(f"JSON Parse Error: {e}")  # Debug log
-                        return {"error": f"Invalid JSON in content: {e}"}
+                    structured_data = json.loads(json_match.group())
+                    await save_structured_data(structured_data)
+                    return structured_data
 
         except json.JSONDecodeError as e:
-            print(f"Response Parse Error: {e}")  # Debug log
             return {"error": f"Invalid response format: {e}"}
 
         return {"error": "No valid JSON found in response"}
 
     except Exception as e:
-        print(f"Exception: {str(e)}")  # Debug log
         return {"error": str(e)}

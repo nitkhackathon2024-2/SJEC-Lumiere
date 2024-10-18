@@ -1,47 +1,11 @@
 [
     {
-        "error": "No valid JSON found in model response"
-    },
-    {
-        "type": "driver_license",
-        "data": {
-            "name": "PRATHAM V BHAT [ae Fae TR]",
-            "dob": "05/12/2003",
-            "gender": "Bt",
-            "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY ae a Mangalore,Dakshina Kannad,KA 575002"
-        }
-    },
-    {
-        "success": true,
-        "structured_data": {
-            "type": "driver_license",
-            "data": {
-                "name": "PRATHAM V BHAT [ae Fae TR]",
-                "dob": "05/12/2003",
-                "gender": "Bt",
-                "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY ae a Mangalore,Dakshina Kannad,KA 575002"
-            }
-        }
-    },
-    {
-        "type": "Permanent Account Number Card",
+        "type": "dl",
         "data": {
             "name": "PRATHAM V BHAT",
-            "dob": "",
-            "gender": "",
-            "address": ""
-        }
-    },
-    {
-        "success": true,
-        "structured_data": {
-            "type": "Permanent Account Number Card",
-            "data": {
-                "name": "PRATHAM V BHAT",
-                "dob": "",
-                "gender": "",
-                "address": ""
-            }
+            "dob": "05/12/2003",
+            "gender": "Bt",
+            "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY a Mangalore,Dakshina Kannad,KA 575002"
         }
     },
     {
@@ -50,52 +14,7 @@
             "name": "PRATHAM V BHAT",
             "dob": null,
             "gender": null,
-            "address": "ale\nfret ara / Father's Name\nSHANKAR VENKATESH BHAT"
-        }
-    },
-    {
-        "success": true,
-        "structured_data": {
-            "type": "Permanent Account Number Card",
-            "data": {
-                "name": "PRATHAM V BHAT",
-                "dob": null,
-                "gender": null,
-                "address": "ale\nfret ara / Father's Name\nSHANKAR VENKATESH BHAT"
-            }
-        }
-    },
-    {
-        "type": "Course",
-        "data": {
-            "branch": "",
-            "validity": "",
-            "institution": "ST JOSEPH ENGINEERING COLLEGE",
-            "name": "Pratham V Bhat",
-            "instructor": "MG AL RU",
-            "dob": "",
-            "gender": "",
-            "course": "Computer Science & Engineering",
-            "year": "2025",
-            "rollNo": "4$021CS111"
-        }
-    },
-    {
-        "success": true,
-        "structured_data": {
-            "type": "Course",
-            "data": {
-                "branch": "",
-                "validity": "",
-                "institution": "ST JOSEPH ENGINEERING COLLEGE",
-                "name": "Pratham V Bhat",
-                "instructor": "MG AL RU",
-                "dob": "",
-                "gender": "",
-                "course": "Computer Science & Engineering",
-                "year": "2025",
-                "rollNo": "4$021CS111"
-            }
+            "address": "ale fret ara / Father's Name SHANKAR VENKATESH BHAT"
         }
     }
 ]
