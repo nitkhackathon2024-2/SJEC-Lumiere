@@ -1,10 +1,25 @@
-[
-    {
-        "type": "course",
-        "data": {
-            "branch": "Computer Science & Engineering",
-            "validity": "2025",
-            "institute": "ST JOSEPH ENGINEERING COLLEGE"
-        }
+{
+    "type": "schedule",
+    "data": {
+        "start_time": "09:30 AM",
+        "end_time": "12:30 PM",
+        "date1": "26-03-2024",
+        "subject1": "Software Engineering and Project Management",
+        "code1": "21CSE501",
+        "date2": "03-04-2024",
+        "subject2": "Automata Theory and Computability",
+        "code2": "21CSE503",
+        "date3": "05-04-2024",
+        "subject3": "Big Data and Analytics",
+        "code3": "21CSE504",
+        "date4": "10-04-2024",
+        "subject4": "Artificial Intelligence and Machine Learning",
+        "code4": "21CSE505",
+        "date5": "13-04-2024",
+        "subject5": "Research Methodology and Intellectual Property Rights",
+        "code5": "21RMISO7",
+        "date6": "15-04-2024",
+        "subject6": "Computer Networks (Integrated)",
+        "code6": "21CSE502"
     }
-]
+}
