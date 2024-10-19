@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
-"use client";
 import { cn } from "@/lib/utils";
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -27,15 +25,11 @@ const secondaryVariant = {
   },
 };
 
-export const FileUpload = ({
-  onChange,
-}: {
-  onChange?: (files: File[]) => void;
-}) => {
-  const [files, setFiles] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+export const FileUpload = ({ onChange }) => {
+  const [files, setFiles] = useState([]);
+  const fileInputRef = useRef(null);
 
-  const handleFileChange = (newFiles: File[]) => {
+  const handleFileChange = (newFiles) => {
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
     onChange && onChange(newFiles);
   };
@@ -51,9 +45,6 @@ export const FileUpload = ({
     onDropRejected: (error) => {
       console.log(error);
     },
-    onDragEnter: () => {},
-    onDragOver: () => {},
-    onDragLeave: () => {},
   });
 
   return (

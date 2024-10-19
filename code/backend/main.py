@@ -29,27 +29,43 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.post("/api/v1/uploads/")
 async def upload_file(file: UploadFile = File(...)):
     try:
+        # Extract file extension
         file_extension = file.filename.split(".")[-1].lower()
         
+        # Process image files (jpg, jpeg, png, bmp, tiff)
         if file_extension in ["jpg", "jpeg", "png", "bmp", "tiff"]:
             image_stream = io.BytesIO(await file.read())
             image = Image.open(image_stream)
             text = pytesseract.image_to_string(image, lang='eng')
+        
+        # Process text files
         elif file_extension == "txt":
             content = await file.read()
             text = content.decode("utf-8")
+        
+        # Process PDF files
         elif file_extension == "pdf":
             pdf_stream = io.BytesIO(await file.read())
             text = extract_text_from_pdf(pdf_stream)
+        
+        # Unsupported file type
         else:
             return {"error": "Unsupported file type"}
-
+        
+        # Pass the extracted text to the Llama model for structured data
         structured_data = await pass_to_llama_model(text)
-        return {"file_type": file_extension, "structured_data": structured_data}
+        
+        # Return the structured data as a JSON response
+        if structured_data:
+            return {
+                "file_type": file_extension,
+                "structured_data": structured_data  # This will be returned to the Next.js frontend
+            }
+        else:
+            return {"error": "Failed to extract structured data from the text"}
 
     except Exception as e:
         return {"error": str(e)}
@@ -96,20 +112,58 @@ def extract_first_json(response_text):
 
     return json_string if in_json and brace_count == 0 else None
 
+# async def save_structured_data(data):
+#     try:
+#         if not data:
+#             return {"error": "No data to save"}
+
+#         os.makedirs(ARTIFACTS_DIR, exist_ok=True)
+        
+#         # Overwrite the file with the new data
+#         with open(JSON_FILE_PATH, 'w') as file:
+#             json.dump(data, file, indent=4)
+
+#         return {"success": "Data successfully saved."}
+#     except Exception as e:
+#         return {"error": f"Failed to save structured data: {str(e)}"}
+
+def flatten_dict(data):
+    """Flatten a nested dictionary into a single-level dictionary."""
+    flat_dict = {}
+    for key, value in data.items():
+        if isinstance(value, dict):
+            for sub_key, sub_value in flatten_dict(value).items():
+                flat_dict[f"{key}.{sub_key}"] = sub_value
+        else:
+            flat_dict[key] = value
+    return flat_dict
 async def save_structured_data(data):
     try:
         if not data:
             return {"error": "No data to save"}
 
         os.makedirs(ARTIFACTS_DIR, exist_ok=True)
-        
+
+        # Wrap the structured data in an array
+        output_data = [
+            {
+                "type": data.get("type", "unknown"),  # Use 'unknown' if type is not provided
+                "data": flatten_dict(data.get("data", {}))  # Flatten the data object if needed
+            }
+        ]
+
         # Overwrite the file with the new data
         with open(JSON_FILE_PATH, 'w') as file:
-            json.dump(data, file, indent=4)
+            # Writing the export statement and the JSON object
+            file.write("export const data = ")
+            json.dump(output_data, file, indent=4)
+            file.write(";\n")  # Ensure a newline after the JSON object
+            file.write("export default data;\n")  # Add the export default statement
 
         return {"success": "Data successfully saved."}
     except Exception as e:
         return {"error": f"Failed to save structured data: {str(e)}"}
+
 
 async def pass_to_llama_model(extracted_text):
     try:
