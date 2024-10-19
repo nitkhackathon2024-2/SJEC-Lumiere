@@ -1,22 +1,15 @@
 export const data = [
-  {
-    type: "invoice",
-    data: {
-      name: "Pranavv Raja C P",
-      address: "Vamanjoor, Mangaluru 575028, Karnataka, India",
-      email: "nagarajpurandar@gmail.com",
-      phone_number: "918951861505",
-      invoice_number: "HSG-2148987",
-      issue_date: "Jun 20, 2024",
-      amount_due: "\u20b91,118.64 (INR)",
-      billing_frequency: "(billed every 2 years)",
-      domain_name: "sceptix.in",
-      price: "\u20b91,498.00 x 1",
-      discount: "(\u20b9550.00)",
-      total_excl_igst: "\u20b9948.00",
-      igst_amount: "\u20b9170.64",
-      total_amount: "\u20b91,118.64",
-    },
-  },
+    {
+        "type": "driver's_license",
+        "data": {
+            "name": "PRATHAM V BHAT",
+            "date_of_birth": "05/12/2003",
+            "birth_group": "Bt",
+            "valid_till": "04/12/2043",
+            "dl_number": "KA19 20240004325",
+            "doi": "10/05/2024",
+            "address": "6-144/2-3 BRINDAVANA KAMALAMMA BADAVANE CAPITANIO BEHIND CAPITANIO SCHOOL POST KANKANADY ae a Mangalore,Dakshina Kannad,KA 575002"
+        }
+    }
 ];
 export default data;
